@@ -1,16 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const Twitter = require('./twitter')
+const Twitter = require('../../lib/twitter')
 
-// const client = new Twitter({
-//     consumer_key: process.env.REACT_APP_TWITTER_CONSUMER_KEY,
-//     consumer_secret: process.env.REACT_APP_TWITTER_CONSUMER_SECRET,
-//     access_token_key: process.env.REACT_APP_TWITTER_ACCESS_TOKEN_KEY,
-//     access_token_secret: process.env.REACT_APP_TWITTER_ACCESS_TOKEN_SECRET
-// })
+const client = new Twitter({
+    consumerKey: process.env.REACT_APP_TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.REACT_APP_TWITTER_CONSUMER_SECRET,
+    bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
+})
 
 router.get('/tweets', (req, res, next) => {
-    Twitter.search()
+    client.search()
 })
 
 module.exports = router
