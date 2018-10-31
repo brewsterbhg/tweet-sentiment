@@ -1,6 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
 import SearchBar from 'components/SearchBar';
-import Twitter from 'lib/twitter';
 
 class App extends PureComponent {
     constructor(props) {
@@ -9,10 +8,6 @@ class App extends PureComponent {
         this.state = {
 
         };
-    }
-
-    componentDidMount() {
-        Twitter.authenticate();
     }
 
     render() {

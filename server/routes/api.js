@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const Twitter = require('../../lib/twitter')
 
 const client = new Twitter({
@@ -8,8 +7,10 @@ const client = new Twitter({
     bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
 })
 
-router.get('/tweets', (req, res, next) => {
-    client.search()
+router.get('/tweets', async (req, res, next) => {
+    const tweets = await client.search('hello')
+
+    res.send(tweets)
 })
 
 module.exports = router
