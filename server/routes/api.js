@@ -7,8 +7,9 @@ const client = new Twitter({
     bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
 })
 
-router.get('/tweets', async (req, res, next) => {
-    const tweets = await client.search('hello')
+router.get('/search', async (req, res, next) => {
+    const { search = "hello" } = req.params
+    const tweets = await client.search(search)
 
     res.send(tweets)
 })
