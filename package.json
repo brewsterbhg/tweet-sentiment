@@ -10,6 +10,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
+    "sentiment": "^5.0.1",
     "twitter": "^1.7.1"
   },
   "scripts": {
