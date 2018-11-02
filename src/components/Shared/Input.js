@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import './input.css';
 
 const Input = () => (
-    <div></div>
+    <Fragment>
+        <div id='input-container'>
+            <div id='input'></div>
+            <input />
+        </div>
+    </Fragment>
 );
 
 export default React.memo(Input);
