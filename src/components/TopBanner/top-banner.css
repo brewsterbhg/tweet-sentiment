@@ -1,12 +1,9 @@
-/*
-    COLOR PALETTE: #DC5C05, #FFAC00, #6EC5B8, #FF9000, #978B7D, #C7BAA7
-*/
 .banner-wrapper {
     padding: 50px;
-    background: #FF9000
+    background: #3D9970;
 }
 
-h1 {
+.banner-wrapper h1 {
     color: #FFF;
     font-size: 40px;
     padding: 10px 0 10px 0;
@@ -14,8 +11,13 @@ h1 {
     font-weight: 600;
 }
 
-h2 {
+.banner-wrapper h2 {
     color: #FFF;
     font-size: 16px;
     font-weight: 400;
+}
+
+.sub-bar {
+    background-color: #111;
+    height: 175px;
 }
