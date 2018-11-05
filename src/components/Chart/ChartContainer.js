@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import DoughnutChart from './DoughnutChart';
+import ChartTitle from './ChartTitle';
 import { array } from 'prop-types';
 import './chart.css';
 
@@ -14,6 +15,7 @@ class ChartContainer extends PureComponent {
         };
 
         this.parseTweetData = this.parseTweetData.bind(this);
+        this.getTitle = this.getTitle.bind(this);
     }
 
     componentDidMount() {
@@ -42,9 +44,37 @@ class ChartContainer extends PureComponent {
         });
     }
 
+    getTitle() {
+        let topScore;
+        let max = 0;
+
+        for (let score in this.state) {
+            if (this.state[score] > max) {
+                topScore = score;
+                max = this.state[score];
+            }
+        }
+        switch(topScore) {
+            case 'negativeCount':
+            case 'positiveCount':
+            case 'neutralCount':
+        }
+    }
+
     render() {
+        const {
+            positiveCount,
+            negativeCount,
+            neutralCount
+        } = this.state;
+
+        this.getTitle();
+
         return (
             <div className='chart'>
+                <ChartTitle
+                    text='test'
+                />
                 <DoughnutChart
                     data={{
                         labels: [
@@ -54,9 +84,9 @@ class ChartContainer extends PureComponent {
                         ],
                         datasets: [{
                             data: [
-                                this.state.positiveCount,
-                                this.state.negativeCount,
-                                this.state.neutralCount
+                                negativeCount,
+                                positiveCount,
+                                neutralCount
                             ],
                             backgroundColor: [
                                 '#FF4136',
@@ -69,9 +99,9 @@ class ChartContainer extends PureComponent {
                                 '#AAAAAA'
                             ],
                             borderColor: [
-                                "#DDDDDD",
-                                "#DDDDDD",
-                                "#DDDDDD"
+                                '#DDDDDD',
+                                '#DDDDDD',
+                                '#DDDDDD'
                             ]
                         }]
                     }}
@@ -84,5 +114,5 @@ class ChartContainer extends PureComponent {
 export default ChartContainer;
 
 ChartContainer.propTypes = {
-    data: array
+    data: array.isRequired
 };
