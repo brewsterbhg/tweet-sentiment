@@ -9,10 +9,8 @@ const client = new Twitter({
 })
 
 router.get('/search', async (req, res, next) => {
-    const { value } = req.params
-    console.log(req.params)
+    const { value } = req.query
     const tweets = await client.search(value)
-    console.log(tweets)
     const tweetObj = utilities.structureTweetData(tweets)
 
     res.send(tweetObj)

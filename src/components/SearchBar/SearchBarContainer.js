@@ -1,5 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import SearchBar from './SearchBar';
+import { func } from 'prop-types';
 import axios from 'axios';
 
 class SearchContainer extends PureComponent {
@@ -24,7 +25,6 @@ class SearchContainer extends PureComponent {
     }
 
     handleKeyPress(e) {
-        console.log(e.key);
         if (e.key === 'Enter') this.handleSubmit(e);
     }
 
@@ -35,7 +35,7 @@ class SearchContainer extends PureComponent {
 
         axios.get(`/api/search?value=${encodeURIComponent(this.state.searchValue)}`)
         .then(response => {
-            console.log(response.data);
+            this.props.handleSearchResults(response.data);
         });
     }
 
@@ -53,3 +53,7 @@ class SearchContainer extends PureComponent {
 }
 
 export default SearchContainer;
+
+SearchContainer.propTypes = {
+    handleSearchResults: func.isRequired
+};
