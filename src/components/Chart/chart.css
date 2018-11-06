@@ -3,3 +3,8 @@
     display: block;
     margin: 0 auto;
 }
+
+.chart h1 {
+    text-align: center;
+    font-size: 50px;
+}

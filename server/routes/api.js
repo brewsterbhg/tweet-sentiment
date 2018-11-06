@@ -16,4 +16,8 @@ router.get('/search', async (req, res, next) => {
     res.send(tweetObj)
 })
 
+router.get('/trending', async (req, res, next) => {
+    
+})
+
 module.exports = router

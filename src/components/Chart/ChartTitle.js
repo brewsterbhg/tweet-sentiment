@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 
 const ChartTitle = ({ color, text }) => <h1 className={color}>{text}</h1>;
 
-export default ChartTitle;
+export default React.memo(ChartTitle);
 
 ChartTitle.propTypes = {
     color: string,

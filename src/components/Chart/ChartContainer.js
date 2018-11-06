@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import DoughnutChart from './DoughnutChart';
 import ChartTitle from './ChartTitle';
 import { array } from 'prop-types';
+import { positiveResponses, negativeResponses, neutralResponses } from 'data/responses';
 import './chart.css';
 
 class ChartContainer extends PureComponent {
@@ -56,8 +57,11 @@ class ChartContainer extends PureComponent {
         }
         switch(topScore) {
             case 'negativeCount':
+                return negativeResponses[Math.floor((Math.random() * negativeResponses.length))];
             case 'positiveCount':
+                return positiveResponses[Math.floor((Math.random() * positiveResponses.length))];
             case 'neutralCount':
+                return neutralResponses[Math.floor((Math.random() * neutralResponses.length))];
         }
     }
 
@@ -67,13 +71,12 @@ class ChartContainer extends PureComponent {
             negativeCount,
             neutralCount
         } = this.state;
-
-        this.getTitle();
+        const text = this.getTitle();
 
         return (
             <div className='chart'>
                 <ChartTitle
-                    text='test'
+                    text={text}
                 />
                 <DoughnutChart
                     data={{
