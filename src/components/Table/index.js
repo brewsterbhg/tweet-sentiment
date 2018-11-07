@@ -1,1 +1,1 @@
-export { default } from './TableContianer';
+export { default } from './Table';
