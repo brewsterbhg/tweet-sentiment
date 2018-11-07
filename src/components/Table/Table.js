@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactTable from 'react-table';
+import 'react-table/react-table.css';
 
-const Table = ({ tweets }) => {
+const Table = ({ data }) => {
     const columns = [{
         Header: 'Status',
         accessor: 'status'
     }, {
         Header: 'Score',
-        accessor: 'score'
+        accessor: 'score.score'
     }, {
         Header: 'Retweet Count',
-        accessor: 'retweet_count'
+        accessor: 'retweets'
     }, {
         Header: 'Date',
-        accessor: 'created_at'
+        accessor: 'date'
     }];
 
     return (
         <ReactTable
-            data={tweets}
+            data={data}
             columns={columns}
         />
     );

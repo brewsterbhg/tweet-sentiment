@@ -2,6 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import TopBanner from 'components/TopBanner';
 import SearchBar from 'components/SearchBar';
 import Chart from 'components/Chart';
+import Table from 'components/Table';
 
 class App extends PureComponent {
     constructor(props) {
@@ -24,7 +25,10 @@ class App extends PureComponent {
                 <TopBanner />
                 <SearchBar handleSearchResults={this.handleSearchResults} />
                 {this.state.results.length > 0 && (
-                    <Chart data={this.state.results} />
+                    <Fragment>
+                        <Chart data={this.state.results} />
+                        <Table data={this.state.results} />
+                    </Fragment>
                 )}
             </Fragment>
         );

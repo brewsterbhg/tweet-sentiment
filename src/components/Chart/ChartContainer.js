@@ -62,6 +62,7 @@ class ChartContainer extends PureComponent {
                 return positiveResponses[Math.floor((Math.random() * positiveResponses.length))];
             case 'neutralCount':
                 return neutralResponses[Math.floor((Math.random() * neutralResponses.length))];
+            default: return;
         }
     }
 

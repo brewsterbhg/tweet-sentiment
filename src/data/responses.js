@@ -38,7 +38,7 @@ export const neutralResponses = [
     'The whole is greater than the sum of its parts - Aristotle.',
     'It\'s not that nobody cares, probably...',
     'Meh - Internet.',
-    '¯\_(ツ)_/¯',
+    '¯\\_(ツ)_/¯',
     '🤷',
     'Yeah, well, that\'s just, like, your opinion, man.',
     'This is my United States of Whatever.'
