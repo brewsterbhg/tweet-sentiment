@@ -2,3 +2,26 @@
     margin-top: 25px;
     text-align: center;
 }
+
+.rt-th {
+    background-color: #3D9970;
+    color: #FFF;
+}
+
+.-striped .rt-tr.-odd {
+    background-color: #DDD;
+}
+
+.-striped .rt-tr.-even {
+    background-color: #AAA;
+}
+
+.-pagination .-center {
+    justify-content: space-evenly;
+}
+
+.-pagination .-btn {
+    background: #3D9970 !important;
+    color: #FFF !important;
+    font-weight: 300;
+}

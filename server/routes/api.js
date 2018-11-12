@@ -3,8 +3,6 @@ const Twitter = require('../../lib/twitter')
 const utilities = require('./../../lib/utilities')
 
 const client = new Twitter({
-    consumerKey: process.env.REACT_APP_TWITTER_CONSUMER_KEY,
-    consumerSecret: process.env.REACT_APP_TWITTER_CONSUMER_SECRET,
     bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
 })
 
@@ -17,9 +15,23 @@ router.get('/search', async (req, res, next) => {
 })
 
 router.get('/trending', async (req, res, next) => {
-    const trending = await client.trending()
+    let response;
+    let date = new Date();
 
-    res.send(trending)
+    if (
+        !req.session.trending ||
+        (req.session.trending &&
+        req.session.expires < date)
+    ) {
+        response = await client.trending()
+
+        req.session.trending = response
+        req.session.expires = new Date(Date.now() + 10000)
+    } else {
+        response = req.session.trending;
+    }
+
+    res.send(response)
 })
 
 module.exports = router

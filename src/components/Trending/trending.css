@@ -4,11 +4,20 @@
     align-items: center;
 }
 
+.trending-tags h3 {
+    margin-right: 15px;
+}
+
 .trend {
+    position: relative;
+    top: 0;
     background-color: #FFFBA3;
     margin: 5px;
+    box-shadow: 2px 2px 4px RGBA(0, 0, 0, 0.35);
+    transition: all 0.1s ease;
 }
 
 .trend:hover {
     cursor: pointer;
+    top: 5px;
 }

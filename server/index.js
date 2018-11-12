@@ -2,8 +2,15 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const compression = require('compression')
+const session = require('express-session')
 require('dotenv').config()
 
+app.use(session({
+  secret: process.env.REACT_APP_SESSION_SECRET,
+  saveUninitialized: false,
+  resave: false,
+  cookie: { secure: false }
+}))
 app.use(compression())
 app.use(express.static(path.join(__dirname, '../build')))
 
