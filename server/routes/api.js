@@ -17,7 +17,9 @@ router.get('/search', async (req, res, next) => {
 })
 
 router.get('/trending', async (req, res, next) => {
-    
+    const trending = await client.trending()
+
+    res.send(trending)
 })
 
 module.exports = router

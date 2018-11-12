@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import SearchBar from './SearchBar';
-import { func } from 'prop-types';
+import { func, string } from 'prop-types';
 import axios from 'axios';
 
 class SearchContainer extends PureComponent {
@@ -43,7 +43,7 @@ class SearchContainer extends PureComponent {
         return (
             <Fragment>
                 <SearchBar
-                    searchValue={this.state.searchValue}
+                    searchValue={this.props.defaultValue || this.state.searchValue}
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress}
                 />
@@ -55,5 +55,6 @@ class SearchContainer extends PureComponent {
 export default SearchContainer;
 
 SearchContainer.propTypes = {
-    handleSearchResults: func.isRequired
+    handleSearchResults: func.isRequired,
+    searchValue: string
 };

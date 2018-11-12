@@ -1,26 +1,38 @@
 import React from 'react';
 import ReactTable from 'react-table';
+import Moment from 'moment';
 import 'react-table/react-table.css';
+import './table.css';
 
 const Table = ({ data }) => {
     const columns = [{
         Header: 'Status',
-        accessor: 'status'
+        accessor: 'status',
+        Cell: row => <div><span title={row.value}>{row.value}</span></div>,
+        width: 900
     }, {
         Header: 'Score',
-        accessor: 'score.score'
+        accessor: 'score.score',
+        maxWidth: 75
     }, {
-        Header: 'Retweet Count',
-        accessor: 'retweets'
+        Header: 'Retweets',
+        accessor: 'retweets',
+        maxWidth: 105
     }, {
         Header: 'Date',
-        accessor: 'date'
+        id: 'date',
+        accessor: d => {
+            return Moment(d.date)
+                .local()
+                .format('LLL')
+        }
     }];
 
     return (
         <ReactTable
             data={data}
             columns={columns}
+            className='-striped -highlight'
         />
     );
 }

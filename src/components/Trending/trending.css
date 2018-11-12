@@ -1,0 +1,14 @@
+.trending-tags {
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.trend {
+    background-color: #FFFBA3;
+    margin: 5px;
+}
+
+.trend:hover {
+    cursor: pointer;
+}
