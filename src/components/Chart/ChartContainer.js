@@ -15,6 +15,7 @@ class ChartContainer extends PureComponent {
             neutralCount: 0
         };
 
+        this.chartRef = React.createRef();
         this.parseTweetData = this.parseTweetData.bind(this);
         this.getTitle = this.getTitle.bind(this);
     }
@@ -22,6 +23,16 @@ class ChartContainer extends PureComponent {
     componentDidMount() {
         this.parseTweetData();
     }
+
+    componentDidUpdate() {
+        console.log(this.chartRef.current)
+        if (this.chartRef) {
+            window.scrollTo({
+                top: this.chartRef.current.offsetTop, 
+                behavior: 'smooth'
+            });
+        }
+    };
 
     parseTweetData() {
         let positiveCount = 0;
@@ -77,6 +88,7 @@ class ChartContainer extends PureComponent {
         return (
             <div className='chart'>
                 <ChartTitle
+                    chartRef={this.chartRef}
                     text={text}
                 />
                 <DoughnutChart

@@ -33,6 +33,9 @@ const Table = ({ data }) => {
             data={data}
             columns={columns}
             className='-striped -highlight'
+            defaultPageSize={10}
+            showPageSizeOptions={false}
+            ofText='/'
         />
     );
 }
