@@ -1,0 +1,41 @@
+footer {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0 20px 0;
+    background: #777;
+    flex-shrink: 0;
+    color: #333;
+}
+
+footer > p {
+    font-size: 18px;
+}
+
+.socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials > p {
+    margin: 10px;
+}
+
+.socials > a {
+    transition: background-size .3s ease;
+    background: linear-gradient(to bottom, transparent 62%, #fff87e 0) center center/0% 75% no-repeat;
+    padding: 0px 6px 0 6px;
+    cursor: pointer;
+    color: rgba(235, 231, 188, 0.7);
+    letter-spacing: .08rem;
+    text-decoration: none;
+}
+
+.socials > a:hover {
+    background-size: 100% 100%;
+}
+
+.socials > a:active {
+    background-size: 80% 100%;
+}

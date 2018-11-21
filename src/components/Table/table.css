@@ -4,24 +4,53 @@
 }
 
 .rt-th {
-    background-color: #3D9970;
+    background-color: #333;
     color: #FFF;
 }
 
 .-striped .rt-tr.-odd {
-    background-color: #DDD;
+    background-color: #FFF;
 }
 
 .-striped .rt-tr.-even {
-    background-color: #AAA;
+    background-color: #BBB;
+}
+
+.ReactTable .-pagination {
+    padding: 0;
 }
 
 .-pagination .-center {
     justify-content: space-evenly;
+    border: none !important;
 }
 
 .-pagination .-btn {
-    background: #3D9970 !important;
+    background: #666 !important;
     color: #FFF !important;
     font-weight: 300;
+    height: 45px !important;
+}
+
+.ReactTable .-pagination .-pageInfo {
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.ReactTable .-pagination .-pageJump input {
+    width: 50px;
+    margin: 0 5px 0 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .ReactTable * {
+        font-size: 14px;
+    }
+
+    .ReactTable .-pagination .-pageJump input {
+        width: 40px;
+        margin: 0 5px 0 5px;
+    }
 }

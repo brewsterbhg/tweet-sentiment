@@ -8,3 +8,14 @@
     text-align: center;
     font-size: 50px;
 }
+
+@media only screen and (max-width: 800px) {
+    .chart h1 {
+        text-align: center;
+        font-size: 32px;
+    }
+
+    .chart h1 {
+        font-size: 24px;
+    }
+}

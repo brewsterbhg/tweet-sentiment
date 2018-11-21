@@ -36,6 +36,7 @@ class SearchContainer extends PureComponent {
         axios.get(`/api/search?value=${encodeURIComponent(this.state.searchValue)}`)
         .then(response => {
             this.props.handleSearchResults(response.data);
+            this.setState({ searchValue: '' });
         });
     }
 
@@ -46,6 +47,7 @@ class SearchContainer extends PureComponent {
                     searchValue={this.props.defaultValue || this.state.searchValue}
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress}
+                    onClick={this.handleSubmit}
                 />
             </Fragment>
         );

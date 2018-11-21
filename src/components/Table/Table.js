@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import Moment from 'moment';
-import 'react-table/react-table.css';
+import "react-table/react-table.css";
 import './table.css';
 
 const Table = ({ data }) => {
@@ -9,7 +9,7 @@ const Table = ({ data }) => {
         Header: 'Status',
         accessor: 'status',
         Cell: row => <div><span title={row.value}>{row.value}</span></div>,
-        width: 900
+        maxWidth: 900
     }, {
         Header: 'Score',
         accessor: 'score.score',

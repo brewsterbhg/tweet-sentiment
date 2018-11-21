@@ -4,7 +4,9 @@ import SearchBar from 'components/SearchBar';
 import Chart from 'components/Chart';
 import Table from 'components/Table';
 import Trending from 'components/Trending';
+import Footer from 'components/Footer';
 import axios from 'axios';
+import './app.css';
 
 class App extends PureComponent {
     constructor(props) {
@@ -42,23 +44,26 @@ class App extends PureComponent {
 
     render() {
         return (
-            <Fragment>
-                <TopBanner />
-                <Trending
-                    trending={this.state.trending}
-                    tagClicked={this.handleTagClicked}
-                />
-                <SearchBar
-                    handleSearchResults={this.handleSearchResults}
-                    defaultValue={this.state.searchValue}
-                />
-                {this.state.results.length > 0 && (
-                    <Fragment>
-                        <Chart data={this.state.results} />
-                        <Table data={this.state.results} />
-                    </Fragment>
-                )}
-            </Fragment>
+            <div className='app'>
+                <div className='content'>
+                    <TopBanner />
+                    <Trending
+                        trending={this.state.trending}
+                        tagClicked={this.handleTagClicked}
+                    />
+                    <SearchBar
+                        handleSearchResults={this.handleSearchResults}
+                        defaultValue={this.state.searchValue}
+                    />
+                    {this.state.results.length > 0 && (
+                        <Fragment>
+                            <Chart data={this.state.results} />
+                            <Table data={this.state.results} />
+                        </Fragment>
+                    )}
+                </div>
+                <Footer />
+            </div>
         );
     }
 }

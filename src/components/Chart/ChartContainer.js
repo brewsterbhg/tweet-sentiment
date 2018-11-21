@@ -25,13 +25,13 @@ class ChartContainer extends PureComponent {
     }
 
     componentDidUpdate() {
-        console.log(this.chartRef.current)
         if (this.chartRef) {
             window.scrollTo({
                 top: this.chartRef.current.offsetTop, 
                 behavior: 'smooth'
             });
         }
+        this.parseTweetData();
     };
 
     parseTweetData() {

@@ -3,7 +3,7 @@ import search from './search.svg';
 import './search-bar.css';
 import { string, func } from 'prop-types';
 
-const SearchBar = ({ value, onChange, onKeyPress }) => (
+const SearchBar = ({ value, onChange, onKeyPress, onClick }) => (
     <Fragment>
         <div className='search-wrapper'>
             <input
@@ -24,6 +24,7 @@ const SearchBar = ({ value, onChange, onKeyPress }) => (
             src={search}
             alt='search icon'
             className='search-icon'
+            onClick={onClick}
         />
     </Fragment>
 );
@@ -31,7 +32,8 @@ const SearchBar = ({ value, onChange, onKeyPress }) => (
 SearchBar.propTypes = {
     value: string,
     onChange: func.isRequired,
-    onKeyPress: func.isRequired
+    onKeyPress: func.isRequired,
+    onClick: func.isRequired
 };
 
 export default React.memo(SearchBar);
