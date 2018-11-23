@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Twitter = require('../../lib/twitter')
 const utilities = require('./../../lib/utilities')
+const Moment = require('moment')
 
 const client = new Twitter({
     bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
@@ -16,17 +17,17 @@ router.get('/search', async (req, res, next) => {
 
 router.get('/trending', async (req, res, next) => {
     let response;
-    let date = new Date();
+    let date = new Moment()
 
     if (
         !req.session.trending ||
         (req.session.trending &&
-        req.session.expires < date)
+        Moment(req.session.expires).diff(date) <= 0)
     ) {
         response = await client.trending()
 
         req.session.trending = response
-        req.session.expires = new Date(Date.now() + 10000)
+        req.session.expires = date.add(5, 'minutes')
     } else {
         response = req.session.trending;
     }
