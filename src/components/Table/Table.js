@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactTable from 'react-table';
 import Moment from 'moment';
 import "react-table/react-table.css";
 import './table.css';
 
 const Table = ({ data }) => {
+    console.log(data)
     const columns = [{
+        Header: 'User',
+        Cell: row => (
+            <Fragment>
+                <img
+                    className='user-image'
+                    src={row.original.user.profile_image_url_https}
+                    alt={`${row.original.user.screen_name} Profile Image`}
+                />
+                <h3 className='user-name'>{row.original.user.screen_name}</h3>
+            </Fragment>
+        ),
+        id: 'profileImage',
+        width: 110
+    },
+    {
         Header: 'Status',
         accessor: 'status',
-        Cell: row => <div><span title={row.value}>{row.value}</span></div>,
-        maxWidth: 900
+        Cell: row => (
+            <a
+                href={`https://twitter.com/${row.original.user.screen_name}/status/${encodeURI(row.original.id)}`}
+                className='status'
+            >
+                {row.value}
+            </a>
+        ),
+        width: 900
     }, {
         Header: 'Score',
         accessor: 'score.score',
         maxWidth: 75
-    }, {
-        Header: 'Retweets',
-        accessor: 'retweets',
-        maxWidth: 105
     }, {
         Header: 'Date',
         id: 'date',

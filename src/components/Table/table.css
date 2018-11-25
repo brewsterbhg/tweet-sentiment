@@ -7,14 +7,14 @@
     background-color: #333;
     color: #FFF;
 }
-
+/* 
 .-striped .rt-tr.-odd {
     background-color: #FFF;
 }
 
 .-striped .rt-tr.-even {
     background-color: #BBB;
-}
+} */
 
 .ReactTable .-pagination {
     padding: 0;
@@ -42,6 +42,21 @@
 .ReactTable .-pagination .-pageJump input {
     width: 50px;
     margin: 0 5px 0 5px;
+}
+
+.user-img {
+    width: 100%;
+    height: 100%;
+}
+
+.user-name {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.status {
+    color: #333;
 }
 
 @media only screen and (max-width: 600px) {
