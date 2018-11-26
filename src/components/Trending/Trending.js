@@ -5,7 +5,7 @@ import './trending.css';
 const Trending = ({ trending, tagClicked }) => (
     <div className="trending-tags">
         <h3>Trending:</h3>
-        {trending.hasOwnProperty('trends') && trending.trends.slice(0, 6).map((trend, i) => {
+        {trending && trending.hasOwnProperty('trends') && trending.trends.slice(0, 6).map((trend, i) => {
             return (
                 <span
                     key={`${trend.name}-${i}`}
