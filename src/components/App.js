@@ -1,10 +1,10 @@
 import React, { Fragment, PureComponent } from 'react';
-import TopBanner from 'components/TopBanner';
-import SearchBar from 'components/SearchBar';
-import Chart from 'components/Chart';
-import Table from 'components/Table';
-import Trending from 'components/Trending';
-import Footer from 'components/Footer';
+import TopBanner from './TopBanner';
+import SearchBar from './SearchBar';
+import Chart from './Chart';
+import Table from './Table';
+import Trending from './Trending';
+import Footer from './Footer';
 import axios from 'axios';
 import './app.css';
 
