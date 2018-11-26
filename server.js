@@ -26,36 +26,43 @@ app.use(session({
 app.use(compression())
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
-
 app.get('/api/search', async (req, res, next) => {
     const { value } = req.query
-    const tweets = await client.search(value)
-    const tweetObj = utilities.structureTweetData(tweets)
 
-    res.send(tweetObj)
+    try {
+      const tweets = await client.search(value)
+      const tweetObj = utilities.structureTweetData(tweets)
+  
+      res.send(tweetObj)
+    } catch (err) {
+      res.status(400).send(err)
+    }
 })
 
 app.get('/api/trending', async (req, res, next) => {
     let response;
     let date = new Moment()
 
-    if (
+    try {
+      if (
         !req.session.trending ||
         (req.session.trending &&
         Moment(req.session.expires).diff(date) <= 0)
-    ) {
-        response = await client.trending()
-
-        req.session.trending = response
-        req.session.expires = date.add(5, 'minutes')
-    } else {
-        response = req.session.trending;
+      ) {
+          response = await client.trending()
+          req.session.trending = response
+          req.session.expires = date.add(5, 'minutes')
+      } else {
+          response = req.session.trending
+      }
+      res.send(response)
+    } catch (err) {
+      res.status(400).send(err)
     }
+})
 
-    res.send(response)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 app.listen(process.env.PORT || 8080, () => console.log(`App listening on port ${process.env.PORT || 8080}`))
