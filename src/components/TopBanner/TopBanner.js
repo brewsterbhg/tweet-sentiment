@@ -10,4 +10,4 @@ const TopBanner = () => (
     </Fragment>
 );
 
-export default React.memo(TopBanner);
+export default TopBanner;

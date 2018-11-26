@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from 'components/App';
-import SearchBar from 'components/SearchBar';
+import App from './../components/App';
+import SearchBar from './../components/SearchBar';
 
 describe('<App />', () => {
     let wrapped;
