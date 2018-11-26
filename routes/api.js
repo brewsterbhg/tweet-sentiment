@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const Twitter = require('../../lib/twitter')
-const utilities = require('./../../lib/utilities')
+const Twitter = require('./../lib/twitter')
+const utilities = require('./../lib/utilities')
 const Moment = require('moment')
 
 const client = new Twitter({
