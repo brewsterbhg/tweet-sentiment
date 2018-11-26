@@ -3,9 +3,13 @@ const path = require('path')
 const app = express()
 const compression = require('compression')
 const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
 
 app.use(session({
+  store: new MemoryStore({
+    checkPeriod: 86400000
+  }),
   secret: process.env.REACT_APP_SESSION_SECRET,
   saveUninitialized: false,
   resave: false,
