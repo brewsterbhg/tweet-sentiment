@@ -13,7 +13,7 @@ const Table = ({ data }) => {
                 <img
                     className='user-image'
                     src={row.original.user.profile_image_url_https}
-                    alt={`${row.original.user.screen_name} Profile Image`}
+                    alt={`${row.original.user.screen_name} Avatar`}
                 />
                 <h3 className='user-name'>{row.original.user.screen_name}</h3>
             </Fragment>

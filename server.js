@@ -4,7 +4,6 @@ const app = express()
 const compression = require('compression')
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
-const PORT = process.env.PORT || 8080;
 require('dotenv').config()
 
 app.use(session({
@@ -26,4 +25,4 @@ app.get('/', (req, res) => {
 
 app.use('/api', require('./routes/api'))
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT}`))
+app.listen(process.env.PORT || 8080, () => console.log(`App listening on port ${process.env.PORT || 8080}`))
