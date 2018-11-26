@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import DoughnutChart from './DoughnutChart';
 import ChartTitle from './ChartTitle';
 import { array } from 'prop-types';
-import { positiveResponses, negativeResponses, neutralResponses } from 'data/responses';
+import { positiveResponses, negativeResponses, neutralResponses } from './../../data/responses';
 import './chart.css';
 
 class ChartContainer extends PureComponent {
