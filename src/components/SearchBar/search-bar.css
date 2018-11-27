@@ -109,6 +109,10 @@ input:focus {
 }
 
 @media only screen and (max-width: 550px) {
+    .search-wrapper {
+        margin: 15px 0 30px 15px;
+    }
+
     .searchbar {
         width: 340px;
         font-size: 20px;
@@ -119,7 +123,7 @@ input:focus {
         height: 30px;
         position: relative;
         left: 350px;
-        top: -45px;
+        top: -75px;
     }
     
     .searchbar:focus + label {
@@ -139,5 +143,30 @@ input:focus {
     .searchbar:focus + label > span,
     .searchbar:valid + label > span {
         top: -80px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .searchbar {
+        width: 240px;
+        font-size: 14px;
+    }
+
+    .search-icon {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        left: 260px;
+        top: -65px;
+    }
+    
+    .searchbar:focus + label {
+        width: 200px;
+    }
+
+    .searchbar + label > span {
+        font-size: 18px;
+        top: -35px;
+        left: -10px;
     }
 }

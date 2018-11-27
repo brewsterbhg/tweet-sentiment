@@ -1,7 +1,7 @@
 .chart {
     max-width: 1000px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 40px auto;
 }
 
 .chart h1 {

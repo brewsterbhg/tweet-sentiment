@@ -1,5 +1,8 @@
 import React from 'react';
 import './footer.css';
+import { ReactComponent as Twitter } from './../../icons/twitter.svg';
+import { ReactComponent as LinkedIn } from './../../icons/linkedin.svg';
+import { ReactComponent as GitHub } from './../../icons/github.svg';
 
 const Footer = () => (
     <footer>
@@ -12,10 +15,15 @@ const Footer = () => (
             </small>
             <div className='socials'>
                 <p>Follow:</p>
-                <a href='https://brewcodes.com/'>Personal</a>
-                <a href='https://github.com/brewsterbhg/'>GitHub</a>
-                <a href='https://www.twitter.com/switchcasebreak'>Twitter</a>
-                <a href='https://www.linkedin.com/in/brewcodes/'>LinkedIn</a>
+                <a href='https://github.com/brewsterbhg/'>
+                    <GitHub />
+                </a>
+                <a href='https://www.twitter.com/switchcasebreak'>
+                    <Twitter />
+                </a>
+                <a href='https://www.linkedin.com/in/brewcodes/'>
+                    <LinkedIn />
+                </a>
             </div>
         </div>
     </footer>

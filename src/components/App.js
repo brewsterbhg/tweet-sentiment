@@ -3,6 +3,7 @@ import TopBanner from './TopBanner';
 import SearchBar from './SearchBar';
 import Chart from './Chart';
 import Table from './Table';
+import TweetList from './TweetList';
 import Trending from './Trending';
 import Footer from './Footer';
 import axios from 'axios';
@@ -58,7 +59,7 @@ class App extends PureComponent {
                     {this.state.results.length > 0 && (
                         <Fragment>
                             <Chart data={this.state.results} />
-                            <Table data={this.state.results} />
+                            <TweetList data={this.state.results} />
                         </Fragment>
                     )}
                 </div>
