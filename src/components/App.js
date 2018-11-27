@@ -2,7 +2,6 @@ import React, { Fragment, PureComponent } from 'react';
 import TopBanner from './TopBanner';
 import SearchBar from './SearchBar';
 import Chart from './Chart';
-import Table from './Table';
 import TweetList from './TweetList';
 import Trending from './Trending';
 import Footer from './Footer';
