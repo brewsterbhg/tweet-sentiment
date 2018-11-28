@@ -10,7 +10,7 @@ const Moment = require('moment')
 require('dotenv').config()
 
 const client = new Twitter({
-    bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
+  bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
 })
 
 app.use(session({
@@ -23,42 +23,50 @@ app.use(session({
   cookie: { secure: false }
 }))
 
+function requireHTTPS(req, res, next) {
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
+    return res.redirect('https://' + req.get('host') + req.url)
+  }
+  next();
+}
+
 app.use(compression())
+app.use(requireHTTPS);
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/api/search', async (req, res, next) => {
-    const { value } = req.query
+  const { value } = req.query
 
-    try {
-      const tweets = await client.search(value)
-      const tweetObj = utilities.structureTweetData(tweets)
-  
-      res.send(tweetObj)
-    } catch (err) {
-      res.status(400).send(err)
-    }
+  try {
+    const tweets = await client.search(value)
+    const tweetObj = utilities.structureTweetData(tweets)
+
+    res.send(tweetObj)
+  } catch (err) {
+    res.status(400).send(err)
+  }
 })
 
 app.get('/api/trending', async (req, res, next) => {
-    let response;
-    let date = new Moment()
+  let response;
+  let date = new Moment()
 
-    try {
-      if (
-        !req.session.trending ||
-        (req.session.trending &&
-        Moment(req.session.expires).diff(date) <= 0)
-      ) {
-          response = await client.trending()
-          req.session.trending = response
-          req.session.expires = date.add(5, 'minutes')
-      } else {
-          response = req.session.trending
-      }
-      res.send(response)
-    } catch (err) {
-      res.status(400).send(err)
+  try {
+    if (
+      !req.session.trending ||
+      (req.session.trending &&
+      Moment(req.session.expires).diff(date) <= 0)
+    ) {
+        response = await client.trending()
+        req.session.trending = response
+        req.session.expires = date.add(5, 'minutes')
+    } else {
+        response = req.session.trending
     }
+    res.send(response)
+  } catch (err) {
+    res.status(400).send(err)
+  }
 })
 
 app.get('*', (req, res) => {
