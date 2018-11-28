@@ -15,7 +15,7 @@ describe('<TopBanner />', () => {
 
     it('renders the a header', () => {
         expect(wrapped.exists('h1')).toEqual(true);
-        expect(wrapped.find('h1').text()).toEqual(`What Am I Supposed To Hate?`);
+        expect(wrapped.find('h1').text()).toEqual(`Why Is The Internet Mad?`);
     });
 
     it('renders the subheader', () => {
