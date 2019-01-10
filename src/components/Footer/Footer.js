@@ -7,7 +7,7 @@ import { ReactComponent as GitHub } from './../../icons/github.svg';
 const Footer = () => (
     <footer>
         <div className='footer-content'>
-            <p>Site By Keith Brewster © 2018</p>
+            <p>Site By Keith Brewster © 2019</p>
             <small>
                 *Be aware that sentiment analysis isn't always accurate. Analysis performed with the <a href='http://corpustext.com/reference/sentiment_afinn.html'>AFINN</a> affective 
                 lexicon.<br /> The results of analysis do not represent or reflect my own personal opinions.<br />
@@ -15,13 +15,13 @@ const Footer = () => (
             </small>
             <div className='socials'>
                 <p>Follow:</p>
-                <a href='https://github.com/brewsterbhg/'>
+                <a href='https://github.com/brewsterbhg/' aria-label="GitHub">
                     <GitHub />
                 </a>
-                <a href='https://www.twitter.com/switchcasebreak'>
+                <a href='https://www.twitter.com/switchcasebreak' aria-label="Twitter">
                     <Twitter />
                 </a>
-                <a href='https://www.linkedin.com/in/brewcodes/'>
+                <a href='https://www.linkedin.com/in/brewcodes/' aria-label="LinkedIn">
                     <LinkedIn />
                 </a>
             </div>
