@@ -9,6 +9,12 @@ const utilities = require("./lib/utilities");
 const Moment = require("moment");
 require("dotenv").config();
 
+const dd_options = {
+  response_code: true,
+  tags: ["app:whyistheinternetmad"]
+};
+const connect_datadog = require("connect-datadog")(dd_options);
+
 const client = new Twitter({
   bearerToken: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`
 });
@@ -39,6 +45,7 @@ function requireHTTPS(req, res, next) {
 app.use(compression());
 app.use(requireHTTPS);
 app.use(express.static(path.join(__dirname, "build")));
+app.use(connect_datadog);
 
 app.get("/api/search", async (req, res) => {
   const { value } = req.query;
