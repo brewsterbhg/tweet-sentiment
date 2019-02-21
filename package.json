@@ -11,9 +11,9 @@
     "express-session": "^1.15.6",
     "memorystore": "^1.6.0",
     "moment": "^2.22.2",
-    "react": "^16.6.0",
+    "react": "^16.8.2",
     "react-chartjs-2": "^2.7.4",
-    "react-dom": "^16.6.0",
+    "react-dom": "^16.8.2",
     "react-scripts": "2.0.5",
     "sentiment": "^5.0.1",
     "twitter": "^1.7.1"

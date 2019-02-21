@@ -1,71 +1,49 @@
-import React, { Fragment, PureComponent } from 'react';
-import TopBanner from './TopBanner';
-import SearchBar from './SearchBar';
-import Chart from './Chart';
-import TweetList from './TweetList';
-import Trending from './Trending';
-import Footer from './Footer';
-import axios from 'axios';
-import './app.css';
+import React, { Fragment, useState, useEffect } from "react";
+import TopBanner from "./TopBanner";
+import Search from "./Search";
+import Chart from "./Chart";
+import TweetList from "./TweetList";
+import Trending from "./Trending";
+import Footer from "./Footer";
+import axios from "axios";
+import "./app.css";
 
-class App extends PureComponent {
-    constructor(props) {
-        super(props);
+const App = () => {
+  const [results, setResults] = useState([]);
+  const [trending, setTrending] = useState([]);
 
-        this.state = {
-            results: [],
-            trending: [],
-            searchValue: null
-        };
+  useEffect(() => {
+    axios.get(`/api/trending`).then(response => {
+      setTrending(response.data[0]);
+    });
+  }, [trending]);
 
-        this.handleSearchResults = this.handleSearchResults.bind(this);
-        this.handleTagClicked = this.handleTagClicked.bind(this);
-    }
+  function handleSearchResults(results) {
+    setResults(results);
+  }
 
-    componentDidMount() {
-        axios.get(`/api/trending`)
-        .then(response => {
-            this.setState({ trending: response.data[0] });
-        });
-    }
+  function handleTagClicked(tag) {
+    axios.get(`/api/search?value=${encodeURIComponent(tag)}`).then(response => {
+      setResults(response.data);
+    });
+  }
 
-    handleSearchResults(results) {
-        this.setState({ results });
-    }
+  return (
+    <div className="app">
+      <div className="content">
+        <TopBanner />
+        <Trending trending={trending} tagClicked={handleTagClicked} />
+        <Search handleSearchResults={handleSearchResults} />
+        {results.length > 0 && (
+          <Fragment>
+            <Chart data={results} />
+            <TweetList data={results} />
+          </Fragment>
+        )}
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
-    handleTagClicked(tag) {
-        axios.get(`/api/search?value=${encodeURIComponent(tag)}`)
-        .then(response => {
-            this.setState({ searchValue: tag }, () => {
-                this.handleSearchResults(response.data);
-            });
-        });
-    }
-
-    render() {
-        return (
-            <div className='app'>
-                <div className='content'>
-                    <TopBanner />
-                    <Trending
-                        trending={this.state.trending}
-                        tagClicked={this.handleTagClicked}
-                    />
-                    <SearchBar
-                        handleSearchResults={this.handleSearchResults}
-                        defaultValue={this.state.searchValue}
-                    />
-                    {this.state.results.length > 0 && (
-                        <Fragment>
-                            <Chart data={this.state.results} />
-                            <TweetList data={this.state.results} />
-                        </Fragment>
-                    )}
-                </div>
-                <Footer />
-            </div>
-        );
-    }
-}
-
-export default App;
+export default React.memo(App);
