@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, memo } from "react";
 import TopBanner from "./TopBanner";
 import Search from "./Search";
 import Chart from "./Chart";
@@ -18,15 +18,15 @@ const App = () => {
     });
   }, [trending]);
 
-  function handleSearchResults(results) {
+  const handleSearchResults = results => {
     setResults(results);
-  }
+  };
 
-  function handleTagClicked(tag) {
+  const handleTagClicked = tag => {
     axios.get(`/api/search?value=${encodeURIComponent(tag)}`).then(response => {
       setResults(response.data);
     });
-  }
+  };
 
   return (
     <div className="app">
@@ -46,4 +46,4 @@ const App = () => {
   );
 };
 
-export default React.memo(App);
+export default memo(App);
